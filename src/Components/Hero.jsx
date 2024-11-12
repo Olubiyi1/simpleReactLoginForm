@@ -9,7 +9,8 @@ const Hero = () => {
         password:""
     })
 
-    const handleSubmit = ()=>{
+    const handleSubmit = (e)=>{
+        e.preventDefault();
         console.log(details);
 
         setDetails({
@@ -25,20 +26,20 @@ const Hero = () => {
                 WELCOME
             </Header>
 
-            <input type="text" placeholder="email/username " 
-            value={details.email}
-            onChange={(e)=>{setDetails({...details, email:e.target.value})}}
-            />
-            <input type="password" placeholder="password "
-            value={details.password}
-            onChange={(e)=>{setDetails({...details, password:e.target.value})}}
-            />
-            <button onClick={handleSubmit}>LOGIN</button>
-            <Paragraph>
-                Don't have account? <span>Register</span>
-            </Paragraph>
-            <p>{details.email}</p>
-            <p>{details.password}</p>
+            <form >
+                <input type="text" placeholder="email/username "
+                value={details.email}
+                onChange={(e)=>{setDetails({...details, email:e.target.value})}}
+                />
+                <input type="password" placeholder="password "
+                value={details.password}
+                onChange={(e)=>{setDetails({...details, password:e.target.value})}}
+                />
+                <button onClick={handleSubmit}>LOGIN</button>
+                <Paragraph>
+                    Don't have account? <span>Register</span>
+                </Paragraph>
+            </form>
         </HeroSection>
      );
 }
@@ -54,6 +55,14 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 gap: 30px;
+
+form{
+    display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 30px;
+}
 
 input{
     width: 314px;
